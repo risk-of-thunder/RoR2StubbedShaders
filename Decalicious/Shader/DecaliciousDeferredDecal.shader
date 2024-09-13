@@ -1,4 +1,4 @@
-Shader "StubbedDecalicious/DecaliciousUnlitDecal" {
+Shader "StubbedDecalicious/DecaliciousDeferredDecal" {
 	Properties {
 		_MaskTex ("Mask", 2D) = "white" {}
 		[PerRendererData] _MaskMultiplier ("Mask (Multiplier)", Float) = 1
@@ -8,6 +8,9 @@ Shader "StubbedDecalicious/DecaliciousUnlitDecal" {
 		[HDR] _Color ("Albedo (Multiplier)", Color) = (1,1,1,1)
 		[Normal] _NormalTex ("Normal", 2D) = "bump" {}
 		_NormalMultiplier ("Normal (Multiplier)", Float) = 1
+		[Toggle(TEX_ATLAS)] _UseAtlas ("Use texture atlas", Float) = 0
+		_AtlasSize ("Atlas Size", Vector) = (4,4,0,0)
+		[PerRendererData] _AtlasCoord ("Atlas Coordinates", Vector) = (0,0,0,0)
 		_SpecularStrength ("Specular Strength", Range(0, 1)) = 0
 		_SpecularExponent ("Specular Exponent", Range(0.1, 20)) = 1
 		_Smoothness ("Smoothness (Multiplier)", Range(0, 1)) = 0.5

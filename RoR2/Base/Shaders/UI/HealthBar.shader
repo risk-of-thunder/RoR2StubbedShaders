@@ -1,16 +1,19 @@
-Shader "StubbedTranslucentImage/TranslucentImage" {
+Shader "StubbedRoR2/Base/Shaders/HealthBar" {
 	Properties {
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-		[HideInInspector] _BlurTex ("Blur Texture", 2D) = "gray" {}
-		_Vibrancy ("Vibrancy", Float) = 1
-		_Brightness ("Brightness", Float) = 0
-		_Flatten ("Flatten", Float) = 0
+		_Color ("Tint", Color) = (1,1,1,1)
+		_FlashColor ("Flashing Color", Color) = (1,1,1,1)
+		[Toggle(FLASH_ENABLED)] _FlashEnabled ("Flash Enabled", Float) = 0
+		[Toggle] _Flash ("Flash Intensity", Float) = 0
 		_StencilComp ("Stencil Comparison", Float) = 8
 		_Stencil ("Stencil ID", Float) = 0
 		_StencilOp ("Stencil Operation", Float) = 0
 		_StencilWriteMask ("Stencil Write Mask", Float) = 255
 		_StencilReadMask ("Stencil Read Mask", Float) = 255
 		_ColorMask ("Color Mask", Float) = 15
+		_FillStart ("Bar Fill Start", Range(0, 1)) = 1
+		_FillEnd ("Bar Fill End", Range(0, 1)) = 1
+		_Rect ("Rect(posX, posY, width, height)", Vector) = (0,0,100,100)
 		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
 	}
 	//DummyShaderTextExporter
@@ -22,14 +25,15 @@ Shader "StubbedTranslucentImage/TranslucentImage" {
 #pragma target 3.0
 
 		sampler2D _MainTex;
+		fixed4 _Color;
 		struct Input
 		{
 			float2 uv_MainTex;
 		};
-
+		
 		void surf(Input IN, inout SurfaceOutputStandard o)
 		{
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = c.rgb;
 			o.Alpha = c.a;
 		}
