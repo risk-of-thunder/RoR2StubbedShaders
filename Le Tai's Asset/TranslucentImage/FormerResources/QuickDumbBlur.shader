@@ -1,7 +1,7 @@
-Shader "StubbedRoR2/Base/Shaders/MobileBlur" {
+Shader "StubbedTranslucentImage/QuickDumbBlur" {
 	Properties {
-		_MainTex ("Base (RGB)", 2D) = "white" {}
-		_Bloom ("Bloom (RGB)", 2D) = "black" {}
+		_MainTex ("Texture", 2D) = "white" {}
+		[Toggle(FLIP_V)] _VertFlip ("Flip Vertical", Float) = 0
 	}
 	//DummyShaderTextExporter
 	SubShader{

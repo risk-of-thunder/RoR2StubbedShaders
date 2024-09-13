@@ -1,7 +1,6 @@
-Shader "StubbedRoR2/Base/Shaders/MobileBlur" {
+Shader "StubbedRoR2/Base/Shaders/HGOnTop" {
 	Properties {
-		_MainTex ("Base (RGB)", 2D) = "white" {}
-		_Bloom ("Bloom (RGB)", 2D) = "black" {}
+		[HDR] _Color ("Color", Color) = (1,1,1,1)
 	}
 	//DummyShaderTextExporter
 	SubShader{
@@ -11,18 +10,18 @@ Shader "StubbedRoR2/Base/Shaders/MobileBlur" {
 #pragma surface surf Standard
 #pragma target 3.0
 
-		sampler2D _MainTex;
+		fixed4 _Color;
 		struct Input
 		{
 			float2 uv_MainTex;
 		};
-
+		
 		void surf(Input IN, inout SurfaceOutputStandard o)
 		{
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
-			o.Albedo = c.rgb;
-			o.Alpha = c.a;
+			o.Albedo = _Color.rgb;
+			o.Alpha = _Color.a;
 		}
 		ENDCG
 	}
+	//CustomEditor "HDRColorPicker"
 }

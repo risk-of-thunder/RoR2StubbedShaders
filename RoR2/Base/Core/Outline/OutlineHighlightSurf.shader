@@ -1,5 +1,6 @@
-Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
+Shader "StubbedRoR2/Base/Core/Outline/OutlineHighlightSurf" {
 	Properties {
+		_OutlineColor ("Outline Color", Color) = (0,1,1,0)
 	}
 	//DummyShaderTextExporter
 	SubShader{
@@ -20,4 +21,5 @@ Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
 		}
 		ENDCG
 	}
+	Fallback "Diffuse"
 }

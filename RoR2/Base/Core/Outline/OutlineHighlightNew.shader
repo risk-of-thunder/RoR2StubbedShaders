@@ -1,5 +1,6 @@
-Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
+Shader "StubbedRoR2/Base/Core/Outline/OutlineHighlightNew" {
 	Properties {
+		_OutlineColor ("Outline Color", Color) = (1,1,1,1)
 	}
 	//DummyShaderTextExporter
 	SubShader{

@@ -9,22 +9,22 @@ Shader "StubbedRoR2/Base/Shaders/HGStandard" {
 		[NoScaleOffset] _EmTex ("Emission Tex (RGB)", 2D) = "white" {}
 		_EmPower ("Emission Power", Range(0, 10)) = 1
 		_Smoothness ("Smoothness", Range(0, 1)) = 0
+		_SecondarySmoothness ("Smoothness for Vertex Color Override", Range(0, 1)) = 0
 		[Toggle(FORCE_SPEC)] _ForceSpecOn ("Ignore Diffuse Alpha for Speculars", Float) = 0
 		[MaterialEnum(Two Tone,0,Smoothed Two Tone,1,Unlitish,3,Subsurface,4,Grass,5)] _RampInfo ("Ramp Choice", Float) = 0
 		[MaterialEnum(Default,0,Environment,1,Character,2,Misc,3)] _DecalLayer ("Decal Layer", Float) = 0
 		_SpecularStrength ("Specular Strength", Range(0, 1)) = 0
 		_SpecularExponent ("Specular Exponent", Range(0.1, 20)) = 1
 		[MaterialEnum(Off,0,Front,1,Back,2)] _Cull ("Cull", Float) = 2
-		[Header(Screenspace Dithering)] [Toggle(DITHER)] _DitherOn ("Enable Dither", Float) = 0
-		_FadeBias ("Fade Bias", Range(0, 1)) = 0
 		[Header(Fresnel Emission)] [Toggle(FRESNEL_EMISSION)] _FEON ("Enable Fresnel Emission", Float) = 0
+		[Toggle(USE_VERTEX_COLORS_FOR_FRESNEL_EMISSION_AND_FLOWMAP)] _DoubleColorsOn ("Use Vertex Colors as mask for Fresnel mask and flowmap", Float) = 0
 		[NoScaleOffset] _FresnelRamp ("Fresnel Ramp", 2D) = "white" {}
 		_FresnelPower ("Fresnel Power", Range(0.1, 20)) = 1
 		[NoScaleOffset] _FresnelMask ("Fresnel Mask", 2D) = "white" {}
 		_FresnelBoost ("Fresnel Boost", Range(0, 20)) = 1
 		[Header(Print Behavior)] [Toggle(PRINT_CUTOFF)] _PrintOn ("Enable Printing", Float) = 0
 		_SliceHeight ("Slice Height", Range(-25, 25)) = 5
-		_SliceBandHeight ("Print Band Height", Range(0, 10)) = 1
+		_SliceBandHeight ("Print Band Height", Range(0, 200)) = 1
 		_SliceAlphaDepth ("Print Alpha Depth", Range(0, 1)) = 0.1
 		_SliceAlphaTex ("Print Alpha Texture", 2D) = "gray" {}
 		_PrintBoost ("Print Color Boost", Range(0, 10)) = 1
@@ -55,13 +55,13 @@ Shader "StubbedRoR2/Base/Shaders/HGStandard" {
 		_FlowHeightBias ("Flow Height Bias", Range(-1, 1)) = 0
 		_FlowHeightPower ("Flow Height Power", Range(0.1, 20)) = 1
 		_FlowEmissionStrength ("Flow Height Strength", Range(0.1, 20)) = 1
-		_FlowSpeed ("Flow Speed", Range(0, 100)) = 1
+		_FlowSpeed ("Flow Speed", Range(0, 15)) = 1
 		_FlowMaskStrength ("Mask Flow Strength", Range(0, 5)) = 0
 		_FlowNormalStrength ("Normal Flow Strength", Range(0, 5)) = 1
 		_FlowTextureScaleFactor ("Flow Texture Scale Factor", Range(0, 10)) = 1
 		[Header(Limb Removal)] [Toggle(LIMBREMOVAL)] _LimbRemovalOn ("Enable Limb Removal", Float) = 0
-		[PerRendererData] _LimbPrimeMask ("Limb Prime Mask", Range(1, 10000)) = 1
-		[PerRendererData] _FlashColor ("Flash Color", Color) = (0,0,0,1)
+		_LimbPrimeMask ("Limb Prime Mask", Range(1, 10000)) = 1
+		_FlashColor ("Flash Color", Color) = (0,0,0,1)
 		[PerRendererData] _Fade ("Fade", Range(0, 1)) = 1
 	}
 	//DummyShaderTextExporter

@@ -1,4 +1,4 @@
-Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
+Shader "StubbedRoR2/Base/Shaders/SceneTint" {
 	Properties {
 	}
 	//DummyShaderTextExporter

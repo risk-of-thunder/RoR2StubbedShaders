@@ -1,5 +1,7 @@
-Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
+Shader "StubbedRoR2/Base/Shaders/Internal-ScreenSpaceShadows_Cheaper" {
 	Properties {
+		_ShadowMapTexture ("", any) = "" {}
+		_ODSWorldTexture ("", 2D) = "" {}
 	}
 	//DummyShaderTextExporter
 	SubShader{

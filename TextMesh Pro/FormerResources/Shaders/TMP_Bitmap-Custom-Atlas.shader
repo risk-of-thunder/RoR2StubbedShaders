@@ -1,16 +1,21 @@
-Shader "StubbedTranslucentImage/TranslucentImage" {
+Shader "StubbedTextMesh Pro/FormerResources/Shaders/TMP_Bitmap-Custom-Atlas" {
 	Properties {
-		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
-		[HideInInspector] _BlurTex ("Blur Texture", 2D) = "gray" {}
-		_Vibrancy ("Vibrancy", Float) = 1
-		_Flatten ("Flatten", Float) = 0
+		_MainTex ("Font Atlas", 2D) = "white" {}
+		_FaceTex ("Font Texture", 2D) = "white" {}
+		[HDR] _FaceColor ("Text Color", Color) = (1,1,1,1)
+		_VertexOffsetX ("Vertex OffsetX", Float) = 0
+		_VertexOffsetY ("Vertex OffsetY", Float) = 0
+		_MaskSoftnessX ("Mask SoftnessX", Float) = 0
+		_MaskSoftnessY ("Mask SoftnessY", Float) = 0
+		_ClipRect ("Clip Rect", Vector) = (-32767,-32767,32767,32767)
+		_Padding ("Padding", Float) = 0
 		_StencilComp ("Stencil Comparison", Float) = 8
 		_Stencil ("Stencil ID", Float) = 0
 		_StencilOp ("Stencil Operation", Float) = 0
 		_StencilWriteMask ("Stencil Write Mask", Float) = 255
 		_StencilReadMask ("Stencil Read Mask", Float) = 255
+		_CullMode ("Cull Mode", Float) = 0
 		_ColorMask ("Color Mask", Float) = 15
-		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
 	}
 	//DummyShaderTextExporter
 	SubShader{
@@ -34,4 +39,5 @@ Shader "StubbedTranslucentImage/TranslucentImage" {
 		}
 		ENDCG
 	}
+	//CustomEditor "TMPro.EditorUtilities.TMP_BitmapShaderGUI"
 }

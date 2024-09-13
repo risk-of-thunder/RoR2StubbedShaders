@@ -1,4 +1,4 @@
-Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
+Shader "StubbedRoR2/Base/Shaders/DoublePassUnlitTemplate" {
 	Properties {
 	}
 	//DummyShaderTextExporter
@@ -20,4 +20,5 @@ Shader "StubbedRoR2/Base/Core/CameraEffects/HGScreenDamage" {
 		}
 		ENDCG
 	}
+	//CustomEditor "ASEMaterialInspector"
 }
